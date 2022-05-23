@@ -106,6 +106,7 @@
                     <!--  ContextMenu  -->
                     <Button.ContextMenu>
                         <ContextMenu x:Name="contextMenu">
+                            <MenuItem Command="{Binding Path=Menu1Command, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}" Header="Menu1" />
                             <MenuItem Header="Menu2" />
                             <MenuItem Header="Menu3" />
                         </ContextMenu>
