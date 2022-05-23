@@ -90,23 +90,24 @@
                     </StackPanel>
                 </Button>
 
-                <Button Style="{StaticResource menuButton}">
+                <Button x:Name="MessageBtn" Style="{StaticResource menuButton}">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="EnvelopeOpenText" Style="{StaticResource menuButtonIcon}" />
                         <TextBlock Style="{StaticResource menuButtonText}" Text="Messages" />
                     </StackPanel>
                     <b:Interaction.Triggers>
                         <b:EventTrigger EventName="Click">
-                            <b:ChangePropertyAction
-                                PropertyName="IsOpen"
-                                TargetName="contextMenu"
-                                Value="True" />
+                            <b:ChangePropertyAction TargetObject="{Binding ContextMenu, ElementName=MessageBtn}"
+                                                    PropertyName="PlacementTarget" Value="{Binding ElementName=MessageBtn,Mode=OneWay}"/>
+                            <b:ChangePropertyAction TargetObject="{Binding ContextMenu, ElementName=MessageBtn}"
+                                                    PropertyName="IsOpen"
+                                                    Value="True"/>
                         </b:EventTrigger>
                     </b:Interaction.Triggers>
                     <!--  ContextMenu  -->
                     <Button.ContextMenu>
-                        <ContextMenu x:Name="contextMenu">
-                            <MenuItem Command="{Binding Path=Menu1Command, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}" Header="Menu1" />
+                        <ContextMenu >
+                            <MenuItem Header="Menu1" Command="{Binding Menu1Command}"/>
                             <MenuItem Header="Menu2" />
                             <MenuItem Header="Menu3" />
                         </ContextMenu>
